@@ -147,6 +147,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0d8c1fef690941d3e7788d328517591fecc684c084084702d6ff1641e993699a"
 
 [[package]]
+name = "bstr"
+version = "0.2.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ba3569f383e8f1598449f1a423e72e99569137b47740b1da11ef19af3d5c3223"
+dependencies = [
+ "memchr",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -908,8 +917,8 @@ checksum = "9b919933a397b79c37e33b77bb2aa3dc8eb6e165ad809e58ff75bc7db2e34574"
 
 [[package]]
 name = "glutin"
-version = "0.26.0"
-source = "git+https://github.com/neovide/glutin?branch=new-keyboard-all#7c313d91584492961b9efab0d611e35b977c0fea"
+version = "0.27.0"
+source = "git+https://github.com/neovide/glutin?branch=neovide-x11-nt#e449e13b6bee62acac8a988c38ee4ac12d540fd6"
 dependencies = [
  "android_glue",
  "cgl",
@@ -930,12 +939,13 @@ dependencies = [
  "wayland-egl",
  "winapi",
  "winit",
+ "x11-dl",
 ]
 
 [[package]]
 name = "glutin_egl_sys"
 version = "0.1.5"
-source = "git+https://github.com/neovide/glutin?branch=new-keyboard-all#7c313d91584492961b9efab0d611e35b977c0fea"
+source = "git+https://github.com/neovide/glutin?branch=neovide-x11-nt#e449e13b6bee62acac8a988c38ee4ac12d540fd6"
 dependencies = [
  "gl_generator",
  "winapi",
@@ -944,12 +954,12 @@ dependencies = [
 [[package]]
 name = "glutin_emscripten_sys"
 version = "0.1.1"
-source = "git+https://github.com/neovide/glutin?branch=new-keyboard-all#7c313d91584492961b9efab0d611e35b977c0fea"
+source = "git+https://github.com/neovide/glutin?branch=neovide-x11-nt#e449e13b6bee62acac8a988c38ee4ac12d540fd6"
 
 [[package]]
 name = "glutin_gles2_sys"
 version = "0.1.5"
-source = "git+https://github.com/neovide/glutin?branch=new-keyboard-all#7c313d91584492961b9efab0d611e35b977c0fea"
+source = "git+https://github.com/neovide/glutin?branch=neovide-x11-nt#e449e13b6bee62acac8a988c38ee4ac12d540fd6"
 dependencies = [
  "gl_generator",
  "objc",
@@ -958,7 +968,7 @@ dependencies = [
 [[package]]
 name = "glutin_glx_sys"
 version = "0.1.7"
-source = "git+https://github.com/neovide/glutin?branch=new-keyboard-all#7c313d91584492961b9efab0d611e35b977c0fea"
+source = "git+https://github.com/neovide/glutin?branch=neovide-x11-nt#e449e13b6bee62acac8a988c38ee4ac12d540fd6"
 dependencies = [
  "gl_generator",
  "x11-dl",
@@ -967,7 +977,7 @@ dependencies = [
 [[package]]
 name = "glutin_wgl_sys"
 version = "0.1.5"
-source = "git+https://github.com/neovide/glutin?branch=new-keyboard-all#7c313d91584492961b9efab0d611e35b977c0fea"
+source = "git+https://github.com/neovide/glutin?branch=neovide-x11-nt#e449e13b6bee62acac8a988c38ee4ac12d540fd6"
 dependencies = [
  "gl_generator",
 ]
@@ -1059,6 +1069,12 @@ checksum = "b2b3ea6ff95e175473f8ffe6a7eb7c00d054240321b84c57051175fe3c1e075e"
 dependencies = [
  "libc",
 ]
+
+[[package]]
+name = "isnt"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a7558cc96ddcaf0b4144d7149984ace2899bb29d4ee2999979d429efc305200"
 
 [[package]]
 name = "itertools"
@@ -2945,7 +2961,7 @@ checksum = "f40009d85759725a34da6d89a94e63d7bdc50a862acf0dbc7c8e488f1edcb6f5"
 [[package]]
 name = "winit"
 version = "0.24.0"
-source = "git+https://github.com/neovide/winit?branch=new-keyboard-all#27967af60d408218529255e897964b6cffd94659"
+source = "git+https://github.com/neovide/winit?branch=neovide-x11-nt#6f91c74bcb115eaa5a49882d8d6e4c8be2bfa8de"
 dependencies = [
  "bitflags",
  "cocoa",
@@ -2971,10 +2987,13 @@ dependencies = [
  "scopeguard",
  "serde",
  "smithay-client-toolkit 0.12.3",
+ "thiserror",
  "unicode-segmentation",
  "wayland-client 0.28.6",
  "winapi",
  "x11-dl",
+ "xcb-dl",
+ "xcb-dl-util",
  "xkbcommon-dl",
 ]
 
@@ -3028,6 +3047,33 @@ dependencies = [
 ]
 
 [[package]]
+name = "xcb-dl"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4ce37e57249f12cbdf43844a3c9b3162f528ec27a1dc1dd7c6f46826063f51e8"
+dependencies = [
+ "libc",
+ "libloading 0.7.4",
+]
+
+[[package]]
+name = "xcb-dl-util"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ac09222229087f380311b876bf8651de4cfe78cf793ef8702932a81385c0f400"
+dependencies = [
+ "bitflags",
+ "bstr",
+ "byteorder",
+ "isnt",
+ "libc",
+ "log",
+ "smallvec",
+ "thiserror",
+ "xcb-dl",
+]
+
+[[package]]
 name = "xcursor"
 version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3048,13 +3094,12 @@ dependencies = [
 [[package]]
 name = "xkbcommon-dl"
 version = "0.1.0"
-source = "git+https://github.com/maroider/xkbcommon-dl?rev=900832888ad6f11011d1369befb344a9aa8a9610#900832888ad6f11011d1369befb344a9aa8a9610"
+source = "git+https://github.com/mahkoh/xkbcommon-dl?rev=dd6a9033b1e45a2668700f14c2d47e48aeb3194f#dd6a9033b1e45a2668700f14c2d47e48aeb3194f"
 dependencies = [
  "bitflags",
  "dlib 0.5.0",
  "lazy_static",
  "log",
- "x11-dl",
 ]
 
 [[package]]
